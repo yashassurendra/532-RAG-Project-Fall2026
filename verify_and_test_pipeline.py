@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 # --- CONFIGURATION ---
 # Keep True (1,000 rows) to verify the entire pipeline in ~5 seconds.
 # Change to False (100,000 rows) once all 8 checks pass!
-TEST_RUN = True
+TEST_RUN = False
 TARGET_N = 1_000 if TEST_RUN else 100_000
 K = 10
 SEED = 42
