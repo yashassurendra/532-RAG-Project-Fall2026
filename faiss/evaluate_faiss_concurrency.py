@@ -1,21 +1,26 @@
-import os
 import time
+from pathlib import Path
+
 import psutil
 import numpy as np
 import pandas as pd
 import concurrent.futures
 from faiss_backend import FaissBackend
 
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT_DIR / "data" / "processed"
+METRICS_DIR = ROOT_DIR / "metrics"
+
 def main():
     # --- 1. SETUP PATHS ---
-    os.makedirs("metrics", exist_ok=True)
+    METRICS_DIR.mkdir(parents=True, exist_ok=True)
     
-    data_dir = "data/processed/"
-    passages_path = data_dir + "passages_100k.npy"
-    metadata_path = data_dir + "metadata_100k.parquet"
-    queries_path = data_dir + "queries_100k.npy"
+    passages_path = DATA_DIR / "passages_100k.npy"
+    metadata_path = DATA_DIR / "metadata_100k.parquet"
+    queries_path = DATA_DIR / "queries_100k.npy"
     
-    results_output_path = "metrics/faiss_concurrency_results.csv"
+    results_output_path = METRICS_DIR / "faiss_concurrency_results.csv"
 
     # --- 2. LOAD ENGINE ---
     print("Loading FAISS engine for concurrency stress test...")

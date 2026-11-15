@@ -1,9 +1,16 @@
 import os
 import time
+from pathlib import Path
+
 import psutil
 import numpy as np
 import pandas as pd
 from faiss_backend import FaissBackend
+
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT_DIR / "data" / "processed"
+METRICS_DIR = ROOT_DIR / "metrics"
 
 def calculate_recall(retrieved_indices, ground_truth_indices):
     """Calculates how many of the retrieved documents are in the ground truth."""
@@ -14,19 +21,17 @@ def calculate_recall(retrieved_indices, ground_truth_indices):
 
 def main():
     # --- 1. SETUP PATHS & PROCESS MONITOR ---
-    os.makedirs("metrics", exist_ok=True)
+    METRICS_DIR.mkdir(parents=True, exist_ok=True)
     
     process = psutil.Process(os.getpid())
     base_memory = process.memory_info().rss / (1024 * 1024)  # Convert bytes to MB
     
-    data_dir = "data/processed/"
-    
     # CHANGED: Now pointing to the new 100k dataset files
-    passages_path = data_dir + "passages_100k.npy"
-    metadata_path = data_dir + "metadata_100k.parquet"
-    queries_path = data_dir + "queries_100k.npy"
+    passages_path = DATA_DIR / "passages_100k.npy"
+    metadata_path = DATA_DIR / "metadata_100k.parquet"
+    queries_path = DATA_DIR / "queries_100k.npy"
     
-    results_output_path = "metrics/faiss_benchmark_results.csv"
+    results_output_path = METRICS_DIR / "faiss_benchmark_results.csv"
 
     # --- 2. LOAD ENGINE & MEASURE RAM ---
     print("Starting evaluation...")
@@ -52,7 +57,7 @@ def main():
     # --- 4. RUN BENCHMARK LOOP ---
     for test in tests:
         print(f"\nRunning test: {test['name']}")
-        ground_truth = np.load(data_dir + test["gt_file"])
+        ground_truth = np.load(DATA_DIR / test["gt_file"])
         
         latencies = []
         recalls = []

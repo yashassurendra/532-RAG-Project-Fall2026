@@ -13,3 +13,4 @@ data/
 # Generated benchmark outputs.
 metrics/
 results/
+graphs/
