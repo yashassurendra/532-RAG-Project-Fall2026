@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.so
+
+.env
+.venv/
+venv/
+
+# Raw and generated datasets are reproducible and can exceed GitHub's limits.
+data/
+
+# Generated benchmark outputs.
+metrics/
+results/
