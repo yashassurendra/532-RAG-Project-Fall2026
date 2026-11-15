@@ -36,6 +36,7 @@ pandas==3.1.1
 pillow==13.0.0
 psutil==7.2.2
 pyarrow==26.0.1
+psycopg2-binary>=2.9,<3
 pydantic==2.14.3
 pydantic_core==2.50.4
 Pygments==2.21.0
@@ -44,6 +45,7 @@ python-dateutil==4.0.0
 pytrec_eval-terrier==0.5.11
 PyYAML==6.0.3
 regex==2026.11.9
+redis>=5,<8
 rich==15.0.0
 safetensors==0.8.0
 scikit-learn==1.9.1

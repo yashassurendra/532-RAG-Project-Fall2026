@@ -3,7 +3,12 @@ services:
     image: redis/redis-stack-server:7.4.0-v6
     container_name: rag_redis_stack
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     deploy:
       resources:
         limits:
@@ -16,3 +21,31 @@ services:
       redis-stack-server
       --save ""
       --appendonly no
+
+  postgres:
+    image: pgvector/pgvector:0.8.0-pg17
+    container_name: rag_postgres
+    environment:
+      POSTGRES_DB: ragdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ragdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 4g
+        reservations:
+          cpus: "2.0"
+          memory: 2g
+
+volumes:
+  postgres_data:
