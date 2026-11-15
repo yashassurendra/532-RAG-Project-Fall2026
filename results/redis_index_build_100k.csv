@@ -1,0 +1,2 @@
+backend,dataset,num_docs,index_build_s,redis_ram_mb,docker_ram_mb,docker_cpu_pct
+redis,100k,100000,44.348,467.1,508.4,89.9

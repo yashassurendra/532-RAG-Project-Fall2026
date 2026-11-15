@@ -1,0 +1,2 @@
+backend,dataset,num_docs,index_build_s,faiss_ram_mb,docker_ram_mb,docker_cpu_pct
+faiss,100k,100000,0.185,326.22,0.0,56.4

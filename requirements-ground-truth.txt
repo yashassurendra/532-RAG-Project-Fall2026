@@ -1,0 +1,5 @@
+beir>=2.0,<3
+numpy>=2.0,<3
+pandas>=2.2,<4
+pyarrow>=18,<27
+sentence-transformers>=3,<7

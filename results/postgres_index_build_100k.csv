@@ -1,0 +1,2 @@
+backend,dataset,num_docs,index_build_s,postgres_ram_mb,docker_ram_mb,docker_cpu_pct
+postgres,100k,100000,98.49,79.08,180.8,5.46
