@@ -25,13 +25,13 @@ figures under `results/` are included for review.
 
 ```text
 faiss/                       FAISS backend and benchmark scripts
-redis/                       Redis Stack loader, benchmark, and plot scripts
-postgres/                    pgvector loader, benchmark, and plot scripts
+redis/                       Redis Stack loader and benchmark scripts
+postgres/                    pgvector loader and benchmark scripts
 tests/                       Ground-truth unit tests
 results/                     Midpoint CSVs and comparison figures
 docker-compose.yml           Pinned Redis and PostgreSQL services
 verify_and_test_pipeline.py  Dataset, metadata, and ground-truth generator
-plot_midpoint.py             Cross-backend midpoint figure generator
+plot_midpoint.py             Canonical cross-backend figure generator
 GROUND_TRUTH.md              Detailed artifact-generation instructions
 ```
 

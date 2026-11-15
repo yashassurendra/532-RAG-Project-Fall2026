@@ -23,17 +23,15 @@ python postgres/load_and_index.py
 python postgres/bench_selectivity.py
 ```
 
-Generate the latency/QPS comparison and PostgreSQL resource plots with:
+After running all three backend benchmarks, generate the canonical comparison
+figures from the repository root with:
 
 ```sh
-python postgres/plot_latency_qps.py
-python postgres/plot_resources.py
-python postgres/plot_recall.py
+python plot_midpoint.py --suffix 100k
 ```
 
-The latency/QPS and recall plots compare available backend summary CSVs. The
-resource plot uses the PostgreSQL summary and index-build CSVs. These scripts
-read result CSVs and do not require the Redis Python client.
+This reads the standardized FAISS, Redis, and PostgreSQL summary and index-build
+CSVs and writes the latency/QPS, Recall@10, and resource figures to `results/`.
 
 `POSTGRES_HOST`, `POSTGRES_PORT`, `POSTGRES_DB`, `POSTGRES_USER`, and
 `POSTGRES_PASSWORD` configure the connection. `DATASET_SUFFIX` selects the dataset;

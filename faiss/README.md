@@ -8,12 +8,17 @@ Run these commands from the repository root:
 ```sh
 python faiss/evaluate_faiss.py
 python faiss/evaluate_faiss_concurrency.py
-python faiss/generate_faiss_graphs.py
 ```
 
 Midpoint benchmark CSV files are written to `results/`; concurrency CSV files
-are written to `metrics/`; and backend-specific charts are written to `graphs/`.
-The midpoint results are kept for review, while `metrics/` and `graphs/` are
+are written to `metrics/`. Generate the canonical cross-backend checkpoint
+figures from the repository root after all three backends have run:
+
+```sh
+python plot_midpoint.py --suffix 100k
+```
+
+Midpoint results and figures are kept for review, while exploratory metrics are
 ignored by Git.
 
 The `faiss/` directory intentionally has no `__init__.py`; this prevents it
