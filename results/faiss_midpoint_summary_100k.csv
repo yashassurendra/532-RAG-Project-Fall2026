@@ -1,0 +1,5 @@
+backend,dataset,filter,p50_ms,p95_ms,p99_ms,qps,recall_at_10,faiss_ram_mb,docker_ram_mb,docker_cpu_pct
+faiss,100k,unfiltered,1.439,1.61,7.944,579.93,1.0,326.22,0.0,77.5
+faiss,100k,50pct,16.799,19.092,30.496,56.93,1.0,326.22,0.0,27.6
+faiss,100k,10pct,3.566,4.753,6.773,266.79,1.0,326.22,0.0,24.0
+faiss,100k,1pct,0.468,0.561,0.697,2062.45,1.0,326.22,0.0,15.4

@@ -6,15 +6,16 @@ import matplotlib.pyplot as plt
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 METRICS_DIR = ROOT_DIR / "metrics"
+RESULTS_DIR = ROOT_DIR / "results"
 GRAPHS_DIR = ROOT_DIR / "graphs"
 GRAPHS_DIR.mkdir(parents=True, exist_ok=True)
 
 # --- 1. FILTER SELECTIVITY GRAPHS ---
 try:
-    df_filter = pd.read_csv(METRICS_DIR / 'faiss_benchmark_results.csv')
+    df_filter = pd.read_csv(RESULTS_DIR / 'faiss_midpoint_summary_100k.csv')
 
     plt.figure(figsize=(10, 6))
-    bars = plt.bar(df_filter['test_name'], df_filter['qps'], color='skyblue', edgecolor='black')
+    bars = plt.bar(df_filter['filter'], df_filter['qps'], color='skyblue', edgecolor='black')
     plt.title('Queries Per Second (QPS) by Filter Selectivity (FAISS)', fontsize=14)
     plt.xlabel('Filter Selectivity', fontsize=12)
     plt.ylabel('Queries Per Second (QPS)', fontsize=12)
@@ -27,12 +28,12 @@ try:
     plt.close()
 
     plt.figure(figsize=(10, 6))
-    plt.plot(df_filter['test_name'], df_filter['p99_latency_ms'], marker='o', linestyle='-', color='red', markersize=8)
+    plt.plot(df_filter['filter'], df_filter['p99_ms'], marker='o', linestyle='-', color='red', markersize=8)
     plt.title('p99 Latency by Filter Selectivity (FAISS)', fontsize=14)
     plt.xlabel('Filter Selectivity', fontsize=12)
     plt.ylabel('p99 Latency (ms)', fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.7)
-    for i, txt in enumerate(df_filter['p99_latency_ms']):
+    for i, txt in enumerate(df_filter['p99_ms']):
         plt.text(i, txt + (txt*0.02), round(txt, 2), ha='center', va='bottom', fontsize=10)
     plt.tight_layout()
     plt.savefig(GRAPHS_DIR / 'latency_chart_100k.png')

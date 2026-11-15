@@ -1,0 +1,5 @@
+backend,dataset,filter,p50_ms,p95_ms,p99_ms,qps,recall_at_10,redis_ram_mb,docker_ram_mb,docker_cpu_pct
+redis,100k,unfiltered,0.547,1.12,1.381,1559.22,0.99,467.12,508.9,42.69
+redis,100k,50pct,1.617,2.647,3.702,551.38,0.99,467.11,507.9,42.31
+redis,100k,10pct,1.969,7.533,12.319,380.35,0.992,467.11,507.9,59.65
+redis,100k,1pct,1.466,1.712,2.399,654.23,1.0,467.11,507.9,40.74

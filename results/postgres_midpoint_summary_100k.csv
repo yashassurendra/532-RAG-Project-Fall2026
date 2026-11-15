@@ -1,0 +1,5 @@
+backend,dataset,filter,p50_ms,p95_ms,p99_ms,qps,recall_at_10,postgres_ram_mb,docker_ram_mb,docker_cpu_pct
+postgres,100k,unfiltered,2.122,3.861,9.313,405.33,0.984,96.56,174.4,3.02
+postgres,100k,50pct,1.739,2.593,2.887,545.42,0.99,101.85,176.0,0.02
+postgres,100k,10pct,2.629,4.579,5.319,357.8,0.966,108.23,176.0,0.03
+postgres,100k,1pct,9.77,16.573,17.407,95.15,0.98,96.88,175.6,0.04
